@@ -3,18 +3,19 @@ import 'package:provider/provider.dart';
 
 import '../../provider/news_provider.dart';
 
-class SportsScreen extends StatefulWidget {
-  const SportsScreen({Key? key}) : super(key: key);
+class ScienceScreen extends StatefulWidget {
+  const ScienceScreen({Key? key}) : super(key: key);
 
   @override
-  State<SportsScreen> createState() => _SportsScreenState();
+  State<ScienceScreen> createState() => _ScienceScreenState();
 }
 
-class _SportsScreenState extends State<SportsScreen> {
+class _ScienceScreenState extends State<ScienceScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
- Provider.of<NewsProvider>(context,listen: false).getDataFromApi(categoryName:'sports');
+
+    Provider.of<NewsProvider>(context,listen: false).getDataFromApi(categoryName:'science');
   }
 
   Widget build(BuildContext context) {

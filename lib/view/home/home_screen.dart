@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:news_c1/view/sciences/sciences_screen.dart';
+import 'package:news_c1/view/business/business_screen.dart';
+import 'package:news_c1/view/sciences/science_screen.dart';
+import 'package:news_c1/view/search/search_screen.dart';
 import 'package:news_c1/view/sports/sports_screen.dart';
-
-import '../business/business_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,39 +13,31 @@ class HomeScreen extends StatelessWidget {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          // backgroundColor: Colors.white,
-          // elevation: 0,
-          title: Text('News App ' ,style: TextStyle(
-            color: Colors.white
-          ),),
+title: Text('New App '),
           actions: [
-            IconButton(
-              onPressed: ( ) { } ,
-              icon: Icon(Icons.search,color: Colors.black,),
-            ),
-            IconButton(
-              onPressed: ( ) { } ,
-              icon: Icon(Icons.lightbulb_outline,color: Colors.black,),
-            ),
+            IconButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: ( ctx) {
+                return SearchScreen();
+              } ));
+            }, icon: Icon (Icons.search ) ),
+            IconButton(onPressed: (){}, icon: Icon(Icons.lightbulb_outline)),
           ],
           bottom: TabBar(
             indicatorColor: Colors.black,
             tabs: [
-
-             Tab(text: 'Business', icon:Icon(  Icons.add_business) ),
-             Tab(text: 'Sports', icon: Icon(Icons.sports),),
-             Tab(text: 'Sciences',icon: Icon(Icons.science),),
+              Tab(text: 'Business', icon: Icon(Icons.add_business),),
+              Tab(text: 'Sports',icon: Icon(Icons.sports),),
+              Tab(text: 'Sciences', icon: Icon(Icons.science),),
             ],
-          ),
+          ) ,
         ),
         body: TabBarView(
           children: [
             BusinessScreen(),
             SportsScreen(),
-            SciencesScreen(),
+            ScienceScreen()
           ],
         ),
-
       ),
     );
   }
