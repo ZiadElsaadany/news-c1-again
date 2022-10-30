@@ -1,6 +1,6 @@
 # news_c1
-
-A new Flutter project.
+#Online 
+News App for group1 Code Flutter Diploma.
 
 ## Getting Started
 
