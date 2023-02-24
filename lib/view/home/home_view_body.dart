@@ -6,6 +6,8 @@ import 'package:news_online_adding_bloc/cubit/news_cubit.dart';
 import 'package:news_online_adding_bloc/cubit/news_states.dart';
 import 'package:news_online_adding_bloc/shared/news_item.dart';
 
+import '../details/details_view.dart';
+
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({Key? key}) : super(key: key);
 
@@ -25,10 +27,25 @@ class HomeViewBody extends StatelessWidget {
                 itemCount:BlocProvider.of<NewsCubit>(context).dataFromApi!.length ,
 
                 itemBuilder: (ctx,index) {
-              return  ItemOfNews(
-                title: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["title"]??"",
-                publishedAt: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["publishedAt"]??"",
-                image: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["urlToImage"]??"",
+              return  GestureDetector(
+
+                onTap:  ( ) {
+                  Navigator.pushNamed(context, DetailsView.routeName,
+                  arguments: DetailsModel(
+                    url:  BlocProvider.of<NewsCubit>(context).dataFromApi![index]["url"]??"" ,
+                    title: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["title"]??"",
+                    content: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["content"]??"" ,
+                    desc: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["description"]??"" ,
+                    image: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["urlToImage"]??"" ,
+                    publishedAt:  BlocProvider.of<NewsCubit>(context).dataFromApi![index]["publishedAt"]??""
+                  )
+                  );
+                },
+                child: ItemOfNews(
+                  title: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["title"]??"",
+                  publishedAt: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["publishedAt"]??"",
+                  image: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["urlToImage"]??"",
+                ),
               )  ;
             }) ;
 
@@ -39,7 +56,25 @@ class HomeViewBody extends StatelessWidget {
     );
   }
 }
+class DetailsModel{
+  final String image ;
+  final String title ;
+  final String desc ;
+  final String content ;
+  final String publishedAt ;
+  final String url;
+  DetailsModel(
+  {
+    required this.image,
+   required  this.title,
+   required  this.desc,
+    required this.content,
+    required this.publishedAt,
+    required this.url
+}
+      );
 
+}
 
 
 

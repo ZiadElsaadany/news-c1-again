@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_online_adding_bloc/cubit/news_cubit.dart';
-import 'package:news_online_adding_bloc/home_view.dart';
+import 'package:news_online_adding_bloc/view/details/details_view.dart';
+import 'package:news_online_adding_bloc/view/home/home_view.dart';
+import 'package:news_online_adding_bloc/view/search_view.dart';
 
 void main( ) {
   runApp(NewsApp());
@@ -16,7 +18,12 @@ class NewsApp extends StatelessWidget {
              category:  "sports"
            ),
       child: MaterialApp(
-        home: HomeView(),
+        home: const HomeView(),
+        routes: {
+         SearchView.routeName: (ctx)=>const SearchView() ,
+        DetailsView.routeName : (ctx)=>const DetailsView()
+
+        },
 
       ),
     );

@@ -24,36 +24,103 @@ class NewsCubit extends Cubit< NewsStates >{
  }
 
  List ?  dataFromApi ;
- getDataFromApi( {required String category } )  async{
-   emit(NewsLoadingState()) ;
-  try{
-    Response response = await  Dio().get(
-      //baseUrl + endpoint  ,
-        "https://newsapi.org/v2/top-headlines" ,
-        queryParameters:  {
-          "apiKey":"9273e8c3654242b380ed9fdbba8f8254",
-          "category":category
-        }
-    );
-
-    emit(NewsSuccessState());
-  dataFromApi = response.data['articles'];
-    debugPrint( '$dataFromApi');
-  }
-  catch(e) {
-
-    emit(NewsFailureState());
-  }
-
-
-
-
+ getDataFromApi( {required String category } )  async {
+   emit(NewsLoadingState());
+   try {
+     Response response = await Dio().get(
+       //baseUrl + endpoint  ,
+         "https://newsapi.org/v2/top-headlines",
+         queryParameters: {
+           "apiKey": "1158faa6107245999d41e1a3797a1846",
+           "category": category
+         }
+     );
+     emit(NewsSuccessState());
+     dataFromApi = response.data['articles'];
+     debugPrint('$dataFromApi');
+   }
+   catch (e) {
+     emit(NewsFailureState());
+   }
  }
+
+
+
+  List dataFromSearchList = [] ;
+
+getDataFromSearch({ required String searchKey  } ) async{
+    emit(SearchLoadingState());
+    try{
+      Response response = await  Dio().get(
+        //baseUrl + endpoint  ,
+          "https://newsapi.org/v2/everything" ,
+          queryParameters:  {
+            "apiKey":"1158faa6107245999d41e1a3797a1846",
+             "q":searchKey
+          }
+      );
+
+      emit(SearchSuccessState( ));
+
+      dataFromSearchList = response.data["articles"];
+
+    }catch(e) {
+
+      emit(SearchFailureState());
+    }
+
+
+}
+
+
+clearSearch( )  {
+
+  dataFromSearchList.clear();
+
+  emit(SearchClearDataState()) ;
+
+}
+
+
+
+
+
+
  // baseurl/endpoint?
 
-
-
-
+//
+//
+//  List    dataFromSearch= []  ;
+//
+// searchFromApi({required String searchKey}  )  async {
+// dataFromSearch= [] ;
+//    emit(SearchLoadingState());
+//    try {
+//      Response response = await  Dio().get(
+//        //baseUrl + endpoint  ,
+//          "https://newsapi.org/v2/everything" ,
+//          queryParameters:  {
+//            "apiKey":"1158faa6107245999d41e1a3797a1846",
+//            'q':searchKey
+//          }
+//      );
+//
+//        emit(GetSearchDataState());
+//        dataFromSearch = response.data["articles"];
+//
+//    }catch(e){
+//      emit(FailureSearchState());
+//      debugPrint ("error");
+//    }
+//
+//
+// }
+//
+//
+// clearDataFromSearch( )  {
+//   dataFromSearch.clear();
+//   emit(ClearSearch());
+// }
 
 }
 
@@ -72,11 +139,11 @@ class NewsCubit extends Cubit< NewsStates >{
 
 
 
+//8c7bb29b0a0c41a7893c4b187cb3334a
 
+//1158faa6107245999d41e1a3797a1846
 
-
-
-
+// b3bb589fa2a44fdb9f3e4dd78fbe05e5
 
 
 //

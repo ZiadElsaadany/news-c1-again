@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_online_adding_bloc/view/details/details_view.dart';
 
 class ItemOfNews extends StatelessWidget {
   const ItemOfNews({Key? key, required this.image, required this.title, required this.publishedAt}) : super(key: key);

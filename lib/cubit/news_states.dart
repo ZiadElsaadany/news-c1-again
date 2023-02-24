@@ -23,6 +23,34 @@ class  NewsSuccessState extends NewsStates{}
 class  NewsFailureState extends NewsStates{ }
 
 
+class SearchLoadingState extends NewsStates { }
+class SearchSuccessState extends NewsStates { }
+class  SearchFailureState extends NewsStates{ }
+class SearchClearDataState extends NewsStates{}
+
+
+
+
+
+
+// loading
+// success
+// failure
+
+
+
+
+
+
+
+
+// class SearchLoadingState extends NewsStates { }
+// class GetSearchDataState extends NewsStates { }
+// class  FailureSearchState extends NewsStates{ }
+//
+// class ClearSearch extends NewsStates  { }
+//
+//
 
 
 

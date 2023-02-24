@@ -11,9 +11,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_online_adding_bloc/cubit/news_cubit.dart';
-import 'package:news_online_adding_bloc/home_view_body.dart';
+import 'package:news_online_adding_bloc/view/home/home_view_body.dart';
+import 'package:news_online_adding_bloc/view/search_view.dart';
 
-import 'cubit/news_states.dart';
+import '../../cubit/news_states.dart';
 
 class HomeView extends StatefulWidget {
    const HomeView({Key? key}) : super(key: key);
@@ -34,6 +35,20 @@ class _HomeViewState extends State<HomeView> {
 
           return   Scaffold(
             appBar: AppBar(
+              actions: [
+                IconButton(onPressed: ( ) {
+
+                  //
+                  //    Navigator.push(context, MaterialPageRoute(builder:(ctx) {
+                  //      return  SearchView();
+                  //    } ));
+
+                  //
+
+                  Navigator.pushNamed(context,  SearchView.routeName);
+
+                } , icon: Icon(Icons.search))
+              ],
               centerTitle: true,
               backgroundColor: Colors.green,
               title: const Text("News App"),
