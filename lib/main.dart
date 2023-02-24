@@ -3,22 +3,62 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_online_adding_bloc/cubit/news_cubit.dart';
 import 'package:news_online_adding_bloc/home_view.dart';
 
-import 'bloc_observer.dart';
-
-void main(  ) {
-  Bloc.observer = MyBlocObserver();
-  runApp(const NewsAppWithBloc() );
+void main( ) {
+  runApp(NewsApp());
 }
-class NewsAppWithBloc extends StatelessWidget {
-  const NewsAppWithBloc({Key? key}) : super(key: key);
+class NewsApp extends StatelessWidget {
+  const NewsApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (ctx)=> NewsCubit(),
+    return  BlocProvider(
+           create: (context)=>NewsCubit()..getDataFromApi(
+             category:  "sports"
+           ),
       child: MaterialApp(
         home: HomeView(),
+
       ),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:news_online_adding_bloc/cubit/news_cubit.dart';
+// import 'package:news_online_adding_bloc/home_view.dart';
+//
+// import 'bloc_observer.dart';
+//
+// void main(  ) {
+//   Bloc.observer = MyBlocObserver();
+//   runApp(const NewsAppWithBloc() );
+// }
+// class NewsAppWithBloc extends StatelessWidget {
+//   const NewsAppWithBloc({Key? key}) : super(key: key);
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocProvider(
+//       create: (ctx)=> NewsCubit(),
+//       child: MaterialApp(
+//         home: HomeView(),
+//       ),
+//     );
+//   }
+// }
+// //8c7bb29b0a0c41a7893c4b187cb3334a

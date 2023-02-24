@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 class ItemOfNews extends StatelessWidget {
   const ItemOfNews({Key? key, required this.image, required this.title, required this.desc}) : super(key: key);
 
-
-
   final String image ;
   final String title;
   final String desc;
@@ -21,12 +19,15 @@ class ItemOfNews extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-         FadeInImage.assetNetwork(
-             imageErrorBuilder: (e,o,r )  {
-               return Image.asset("assets/images/loadingPicture.jpg");
-             },
-             placeholder: 'assets/images/loadingPicture.jpg', image: image)
-          ,
+          FadeInImage.assetNetwork(
+              placeholder: "assets/images/loadingPicture.jpg",
+              image: image,
+
+            imageErrorBuilder: (e,c,r ) {
+
+                return Image.asset ("assets/images/loadingPicture.jpg") ;
+            },
+          ),
           const SizedBox(
             height: 20,
           ),
