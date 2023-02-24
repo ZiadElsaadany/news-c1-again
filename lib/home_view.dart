@@ -34,7 +34,8 @@ class _HomeViewState extends State<HomeView> {
 
           return   Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.black,
+              centerTitle: true,
+              backgroundColor: Colors.green,
               title: const Text("News App"),
             ),
 
@@ -42,8 +43,13 @@ class _HomeViewState extends State<HomeView> {
               unselectedItemColor: Colors.grey,
               currentIndex:cubit.currentIndexForScreens ,
               onTap: ( index) {
-                cubit.changeIndex(index: index);
 
+                cubit.changeIndex(index: index);
+                cubit.getDataFromApi(
+                    category: cubit.currentIndexForScreens==0 ? "sports":
+                    cubit.currentIndexForScreens==1? "business":
+                    "health"
+                );
               },
 
               items: const [

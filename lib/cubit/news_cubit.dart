@@ -1,11 +1,5 @@
 
 
-
-
-
-
-import 'dart:io';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -38,7 +32,6 @@ class NewsCubit extends Cubit< NewsStates >{
         "https://newsapi.org/v2/top-headlines" ,
         queryParameters:  {
           "apiKey":"9273e8c3654242b380ed9fdbba8f8254",
-          "country": "eg" ,
           "category":category
         }
     );

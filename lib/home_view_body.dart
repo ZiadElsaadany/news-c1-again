@@ -27,7 +27,7 @@ class HomeViewBody extends StatelessWidget {
                 itemBuilder: (ctx,index) {
               return  ItemOfNews(
                 title: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["title"]??"",
-                desc: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["description"]??"",
+                publishedAt: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["publishedAt"]??"",
                 image: BlocProvider.of<NewsCubit>(context).dataFromApi![index]["urlToImage"]??"",
               )  ;
             }) ;

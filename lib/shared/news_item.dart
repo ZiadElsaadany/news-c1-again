@@ -1,21 +1,15 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ItemOfNews extends StatelessWidget {
-  const ItemOfNews({Key? key, required this.image, required this.title, required this.desc}) : super(key: key);
+  const ItemOfNews({Key? key, required this.image, required this.title, required this.publishedAt}) : super(key: key);
 
   final String image ;
   final String title;
-  final String desc;
+  final String publishedAt;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(20),
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration (
-          borderRadius: BorderRadius.circular(20) ,
-          color: Colors.black
-      ),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -32,17 +26,19 @@ class ItemOfNews extends StatelessWidget {
             height: 20,
           ),
           Text(title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-                fontSize:25,
-                color: Colors.white,
+                fontSize:18,
+                color: Colors.black,
                 fontWeight: FontWeight.bold
             ),
           ),
-          Text(desc,
+          Text(publishedAt,
             style: const TextStyle(
                 color: Colors.grey,
                 fontWeight: FontWeight.bold ,
-                fontSize: 25
+                fontSize: 15
             ),
 
           )
@@ -52,3 +48,4 @@ class ItemOfNews extends StatelessWidget {
     );
   }
 }
+
